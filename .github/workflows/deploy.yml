@@ -22,7 +22,9 @@ jobs:
           ls
           
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd /home/runner/work/github-actions/github-actions/nodiejs_demo_1/
+          npm install
 
       - name: Deploy to AWS Lambda
         env:
