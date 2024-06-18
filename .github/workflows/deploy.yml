@@ -18,8 +18,8 @@ jobs:
       - name: Check for changes in folder
         id: check_changes
         run: |
-          echo "Changed files:"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          pwd
+          ls
           
       - name: Install dependencies
         run: npm install
