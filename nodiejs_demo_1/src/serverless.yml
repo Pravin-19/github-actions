@@ -1,0 +1,25 @@
+service: node-lambda-app
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  app:
+    handler: handler.app
+    events:
+      - http:
+          path: /
+          method: get
+
+plugins:
+  - serverless-http
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+    - .github/**
