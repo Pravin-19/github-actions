@@ -30,7 +30,8 @@ jobs:
         run: |
           pwd
           ls -al
-          cd /home/runner/work/github-actions/github-actions/nodiejs_demo_1/src
+          # cd /home/runner/work/github-actions/github-actions/nodiejs_demo_1/src
+          cd /nodiejs_demo_1/src
           pwd
           ls
           if [ -e package-lock.json ]; then
@@ -46,7 +47,10 @@ jobs:
           pwd
           ls
           cd nodiejs_demo_1/src/
+          pwd
+          ls
           zip -qq -r ./nodiejs_demo_1.zip ./*
+          ls -la
           ls
 
         env:
