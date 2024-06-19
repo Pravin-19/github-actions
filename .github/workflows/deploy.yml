@@ -24,7 +24,7 @@ jobs:
         id: check_changes
         run: |
           echo "Changed files:"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          # git diff --name-only ${{ github.event.before }} ${{ github.sha }}
           
       - name: npm install and build
         run: |
