@@ -47,6 +47,7 @@ jobs:
           ls
           cd nodiejs_demo_1/src/
           zip -qq -r ./nodiejs_demo_1.zip ./*
+          ls
 
         env:
           CI: true
@@ -55,10 +56,10 @@ jobs:
       #   uses: appleboy/lambda-action@master
       - name: AWS Lambda Deploy
         uses: appleboy/lambda-action@v0.2.0
-
+        
         with:
-          aws_access_key_id: 
-          aws_secret_access_key:    
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}    
           aws_region: us-east-2
-          function_name: 
+          function_name: nodejsdemo
           zip_file: nodiejs_demo_1/src/nodiejs_demo_1.zip
