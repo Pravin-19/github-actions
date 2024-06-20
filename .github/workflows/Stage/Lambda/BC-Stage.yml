@@ -1,1 +1,70 @@
 
+name: Deploy to Stage AWS Lambda
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'nodiejs_demo_1/src/handler.js'
+jobs:
+  deploy_source:
+    name: build and deploy lambda
+    strategy:
+      matrix:
+        node-version: [20.x]
+        
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Check for changes in nodiejs_demo_1 folder
+        id: check_changes
+        run: |
+          echo "Changed files:"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          
+      - name: npm install and build
+        run: |
+          pwd
+          ls -al
+          cd /home/runner/work/github-actions/github-actions/nodiejs_demo_1/src
+          # cd /nodiejs_demo_1/src -CAUSING ERROR
+          pwd
+          ls
+          if [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi
+          # npm ci
+          npm run build --if-present
+
+      - name: zip
+        run: |
+          pwd
+          ls
+          cd nodiejs_demo_1/src/
+          pwd
+          ls
+          zip -qq -r ./nodiejs_demo_1.zip ./*
+          ls -la
+          ls
+
+        env:
+          CI: true
+          
+      # - name: default deploy
+      #   uses: appleboy/lambda-action@master
+      - name: AWS Lambda Deploy
+        uses: appleboy/lambda-action@v0.2.0
+        
+        with:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}    
+          aws_region: us-east-2
+          function_name: nodejsdemo
+          zip_file: nodiejs_demo_1/src/nodiejs_demo_1.zip
