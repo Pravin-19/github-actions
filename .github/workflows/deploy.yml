@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'nodiejs_demo_1/**'
+      - 'nodiejs_demo_1/src/handler.js'
 jobs:
   deploy_source:
     name: build and deploy lambda
