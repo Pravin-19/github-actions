@@ -26,9 +26,11 @@ jobs:
         run: |
           # Get the current date and time in the format "YYYY-MM-DD_HH:MM:SS"
           VERSION_DESCRIPTION=$(date '+%Y-%m-%d_%H:%M:%S')
-
+          ls
+          
           # Update state machine with new definition and publish a new version
-          json_content=$(cat nodejs_demo_1/src/demo.json)
+          json_content=$(cat nodiejs_demo_1/src/demo.json)
+          
           aws stepfunctions update-state-machine \
             --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
             --definition "$json_content" \
