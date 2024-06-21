@@ -24,7 +24,7 @@ jobs:
 
       - name: Update Step Function Definition
         run: |
-          # Get the current date and time in the format "YYYY-MM-DD_HH:MM:SS"
+          # Get the current date and time in the format "YYYY-MM-DD_HH:MM:SS" - UTC Format
           VERSION_DESCRIPTION=$(date '+%Y-%m-%d_%H:%M:%S')
           ls
           
@@ -35,4 +35,4 @@ jobs:
             --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
             --definition "$json_content" \
             --publish \
-            --version-description "$VERSION_DESCRIPTION"
+            --version-description "BC-Stage-$VERSION_DESCRIPTION"
