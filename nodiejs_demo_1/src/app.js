@@ -7,8 +7,6 @@ app.get('/', (req, res) => {
   res.send('Hello, AWS Lambda!');
 });
 
-
-
 app.listen(port, () => {
   console.log("UPdated");
   console.log(`Server is running on port ${port}`);
