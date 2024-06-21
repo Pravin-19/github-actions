@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'nodiejs_demo_1/src/demo.json'
+      - 'nodejs_demo_1/src/demo.json'
 
 jobs:
   update-step-function:
@@ -19,23 +19,17 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
       - name: Update Step Function Definition
         run: |
-          pwd
-          ls -al
-          
           # Get the current date and time in the format "YYYY-MM-DD_HH:MM:SS"
           VERSION_DESCRIPTION=$(date '+%Y-%m-%d_%H:%M:%S')
 
           # Update state machine with new definition and publish a new version
           aws stepfunctions update-state-machine \
             --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
-            --definition file://nodiejs_demo_1/src/demo.json \
-
-          aws stepfunctions publish-state-machine-version \
-          --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
-          --description "Your version description"
-
+            --definition file://nodejs_demo_1/src/demo.json \
+            --publish \
+            --description "$VERSION_DESCRIPTION"
