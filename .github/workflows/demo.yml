@@ -18,8 +18,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: AKIAZNJ5QUNOQ4XJWMVK
-          aws-secret-access-key: 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
+          aws-access-key-id: 
+          aws-secret-access-key: 
           aws-region: us-east-1
 
       - name: Update Step Function Definition
