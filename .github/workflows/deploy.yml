@@ -26,6 +26,13 @@ jobs:
         run: |
           pwd
           ls -al
+          
+          # Get the current date and time in the format "YYYY-MM-DD_HH:MM:SS"
+          VERSION_DESCRIPTION=$(date '+%Y-%m-%d_%H:%M:%S')
+
+          # Update state machine with new definition and publish a new version
           aws stepfunctions update-state-machine \
-          --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
-          --definition file://nodiejs_demo_1/src/demo.json
+            --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
+            --definition file://nodiejs_demo_1/src/demo.json \
+            --publish true \
+            --version-description "BC-Stage-$VERSION_DESCRIPTION"
