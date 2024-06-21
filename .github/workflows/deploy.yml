@@ -32,4 +32,4 @@ jobs:
             --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
             --definition file://nodejs_demo_1/src/demo.json \
             --publish "true" \
-            --description "$VERSION_DESCRIPTION"
+            --version-description "$VERSION_DESCRIPTION"
