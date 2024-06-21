@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'nodiejs_demo_1/src/demo.json'
+      - 'nodiejs_demo_1/src/deploy.json'
 
 jobs:
   update-step-function:
