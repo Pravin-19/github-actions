@@ -31,6 +31,6 @@ jobs:
           
           aws stepfunctions update-state-machine \
             --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
-            --definition file://nodiejs_demo_1/src/demo.json
+            --definition file://nodiejs_demo_1/src/demo.json \
             --publish \
             --version-description "BC-Stage-$VERSION_DESCRIPTION"
