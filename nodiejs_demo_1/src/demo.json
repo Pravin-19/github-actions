@@ -9,7 +9,7 @@
       },
       "World": {
         "Type": "Pass",
-        "Result": "Velu",
+        "Result": "Velusamy",
         "End": true
       }
     }
