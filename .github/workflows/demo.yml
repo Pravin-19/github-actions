@@ -1,4 +1,4 @@
-name: Demo_stage_Step Function
+name: Demo_Step Function
 
 on:
   push:
