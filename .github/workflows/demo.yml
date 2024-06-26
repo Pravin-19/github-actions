@@ -3,7 +3,7 @@ name: Demo_Step-Function
 on:
   push:
     branches:
-      - main
+      - stage
     paths:
       - 'nodejs_demo_1/src/demo.json'
 
