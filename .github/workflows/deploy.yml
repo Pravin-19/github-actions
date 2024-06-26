@@ -19,8 +19,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id:
-          aws-secret-access-key:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
       - name: Update Step Function Definition
@@ -33,7 +33,7 @@ jobs:
           json_content=$(cat nodiejs_demo_1/src/demo.json)
           
           aws stepfunctions update-state-machine \
-            --state-machine-arn <arn> \
+            --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
             --definition "$json_content" \
             --publish \
             --version-description "BC-Stage-$VERSION_DESCRIPTION"
