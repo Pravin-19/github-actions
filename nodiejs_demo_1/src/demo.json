@@ -4,7 +4,7 @@
     "States": {
       "Hello": {
         "Type": "Pass",
-        "Result": "Prav",
+        "Result": "Pravin",
         "Next": "World"
       },
       "World": {
