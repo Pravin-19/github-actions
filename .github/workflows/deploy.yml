@@ -3,9 +3,9 @@ name: Demo_stage_Step Function
 on:
   push:
     branches:
-      - main
+      - prod
     paths:
-      - 'nodejs_demo_1/src/demo.json'
+      - 'nodiejs_demo_1/src/demo.json'
 
 jobs:
   update-step-function:
