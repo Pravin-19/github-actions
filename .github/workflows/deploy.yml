@@ -33,7 +33,7 @@ jobs:
           json_content=$(cat nodiejs_demo_1/src/demo.json)
           
           aws stepfunctions update-state-machine \
-            --state-machine-arn <arn> \
+            --state-machine-arn arn:aws:states:us-east-1:647058465629:stateMachine:demo-sf \
             --definition "$json_content" \
             --publish \
             --version-description "BC-Stage-$VERSION_DESCRIPTION"
